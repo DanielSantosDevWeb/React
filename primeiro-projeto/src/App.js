@@ -1,31 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-import SubTitulo from './components/SubTitulo';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  BrowserRouter,
+} from "react-router-dom";
+
+import styles from "./App.module.css";
+
+import Home from "./components/pages/Home";
+import Empresa from "./components/pages/Empresa";
+import Contato from "./components/pages/Contato";
+import NavBar from "./components/pages/NavBar";
+import Footer from "./components/pages/Footer";
 
 function App() {
-
-  const soma = (n1 , n2)=> {
-    return `o resultado eh ${n1 + n2}`
-  }
-
-  const urlImg = 'https://via.placeholder.com/150'
-
+  const urlImg = "https://via.placeholder.com/150";
 
   return (
-    <div className="App">
-      <h1>Projeto React</h1>
-      <p>Criando meu primeiro Projeto em react</p>
+    <div className={styles.body}>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} exect />
+          <Route path="/empresa" element={<Empresa />} />
+          <Route path="/contato" element={<Contato />} />
+        </Routes>
+      </BrowserRouter>
 
-      <h3>Somando numeros</h3>
-
-      <p>{soma(3 , 3)}</p>
-
-      <h3>Adicionando imagens</h3>
-
-      <img src={urlImg}></img>
-
-      < SubTitulo />
-
+      <Footer />
     </div>
   );
 }
